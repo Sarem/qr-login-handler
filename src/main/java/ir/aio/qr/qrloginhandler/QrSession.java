@@ -11,6 +11,6 @@ import lombok.ToString;
 @ToString
 public class QrSession {
     private String id;
-    private String userId;
+    private String user;
     private String password;
 }
