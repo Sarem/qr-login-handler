@@ -5,13 +5,16 @@ import org.springframework.data.redis.core.ReactiveRedisOperations;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("qr")
 @AllArgsConstructor
 @ControllerAdvice
 public class LoginController {
 
-    QrService qrService;
+    private QrService qrService;
+
+
     private final ReactiveRedisOperations<String, QrSession> qrSessionOps;
 
     @GetMapping("listen/{qr}")
@@ -25,7 +28,9 @@ public class LoginController {
     }
 
     @GetMapping("/generate")
-    public Mono<String> getQR() {
-        return qrService.generateQR();
+    public Mono<QrDTO> getQR() {
+        return qrService.generateQR().map(s -> new QrDTO(s,"lo"));
     }
+
+
 }

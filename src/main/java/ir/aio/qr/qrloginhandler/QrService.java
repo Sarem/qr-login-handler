@@ -18,7 +18,7 @@ public class QrService {
 
 
     public Mono<String> generateQR() {
-        return Mono.fromSupplier(() -> UUID.randomUUID().toString());
+        return Mono.fromSupplier(() -> UUID.randomUUID().toString().substring(0,5));
     }
 
     public Mono<Long> put(QrSession qrSession) {
