@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class QrDTO {
     private String code;
     private String loginUrl;
+
 }
